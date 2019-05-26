@@ -1,0 +1,9 @@
+CREATE TABLE comments (
+    id SERIAL PRIMARY KEY,
+    text TEXT NOT NULL,
+    date_created TIMESTAMP DEFAULT now() NOT NULL,
+    post_id INTEGER
+        REFERENCES posts(id) ON DELETE CASCADE NOT NULL,
+    subscriber_id INTEGER
+        REFERENCES subscribers(id) ON DELETE CASCADE NOT NULL
+);
