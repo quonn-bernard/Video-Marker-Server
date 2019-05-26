@@ -14,6 +14,7 @@ const PostsService = {
         'pos.date_created',
         'pos.content',
         'pos.image',
+        'pos.rating',
         ...userFields,
         db.raw(
           'count(DISTINCT rev) AS number_of_comments'
@@ -151,6 +152,7 @@ const PostsService = {
 
   //inserts new posts
   insertPost(db, newPost) {
+    console.log(newPost)
     return db
       .insert(newPost)
       .into('posts')
@@ -176,6 +178,7 @@ const PostsService = {
       id: post.id,
       image: post.image,
       content: xss(post.content),
+      rating: post.rating,
       date_created: post.date_created,
       subscriber: post.subscriber || {},
     }

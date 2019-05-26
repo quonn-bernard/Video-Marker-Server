@@ -64,8 +64,8 @@ module.exports = postsRouter
 postsRouter
   .route('/')
   .post(requireAuth, jsonBodyParser, (req, res, next) => {
-    const {title, image, content } = req.body;
-    const newPost = { title, image, content };
+    const {title, image, content, rating } = req.body;
+    const newPost = { title, image, content, rating };
     for (const [key, value] of Object.entries(newPost))
       if (value === null || value === undefined)
         return res.status(400).json({

@@ -12,7 +12,7 @@ const authRouter = require('./auth/auth-router');
 const subscribersRouter = require('./subscribers/subscribers-router')
 const app = express();
 
-app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common', {
+app.use(morgan((NODE_ENV === 'development') ? 'tiny' : 'common', {
   skip: () => NODE_ENV === 'test',
 }));
 app.use(cors());
@@ -28,7 +28,7 @@ app.use('/api/subscribers',subscribersRouter);
 app.use(function errorHandler(error, req, res, next) {
   let response;
   if (NODE_ENV === 'production') {
-    response = { error: 'Server erro' };
+    response = { error: 'Server error' };
     console.log(error);
   } else {
     response = { error: error.message, object: error };
