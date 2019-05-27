@@ -28,7 +28,7 @@ app.use('/api/subscribers',subscribersRouter);
 app.use(function errorHandler(error, req, res, next) {
   let response;
   if (NODE_ENV === 'production') {
-    response = { error: 'Server erro' };
+    response = { error: 'Server error' };
     console.log(error);
   } else {
     response = { error: error.message, object: error };
